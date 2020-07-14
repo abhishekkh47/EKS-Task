@@ -1,0 +1,57 @@
+1. eksctl
+
+2. aws configure
+
+3. cluster.yml
+
+4. eksctl create cluster -f cluster_config_file.yml
+    execute the file
+
+5. aws eks update-kubeconfig --name eks-cluster
+   check the cluster
+ ->eksctl get cluster
+ ->kubectl cluster info
+
+ ->aws eks update-kubeconfig --name eks-cluster
+  
+ ->kubectl create ns <namespace name>
+
+ ->kubectl config set-context --current --namespace=<namespace name>
+   set the namespace as current context
+
+ ->kubectl config view
+
+6. aws eks list-clusters
+
+7. set up the wordpress
+
+8. create sql_deploy.yml
+
+9. create wp_deploy.yml
+
+10. create Kustomization.yml 
+
+11. kubectl create -k .
+    Execute k file 
+
+12. kubectl get nodes
+
+13. kubectl get pods
+
+14. eksctl delete cluster -f <file/name/through/created/the/cluster>
+    Delete the infra
+
+
+
+
+
+
+eksctl utils write-kubeconfig -n eks-cluster
+
+Important Aspects:
+Amazon EKS cluster manages the master node and it also provides hardware and resources to workers or slave nodes.
+EKS has a High Availability Master node if in any case master node goes down it will launch another HA Master node for us.
+EKS follows the concept of Disaster Recovery infrastructure.
+We have created Persistent Volume to keep our data persistent for WordPress application and WordPress MySQL DB. If in any case, our PODS goes down we are not going to lose our data.
+We have attached the created PVC to WordPress application and WordPress MySQL DB.
+We have exposed the WordPress application ( frontend ) to the external world for security purposes.
